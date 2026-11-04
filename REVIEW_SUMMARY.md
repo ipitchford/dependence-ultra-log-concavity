@@ -20,7 +20,7 @@ Independent tests used exact rationals. Adversarial weight hill-climbing ran on 
 | Hard to read for non-specialists | Added a reader's guide, a roadmap, a worked example (two disjoint edges) and a key-terms list. |
 | The abstract undersold the result and repeated itself | Rewritten: it now says the paper proves Conjecture 4.1, with the status kept separate. |
 | No discussion of the Lorentzian/Mason literature | Added a related-work section, citing Anari–Liu–Oveis Gharan–Vinzant, Brändén–Huh and Liggett, and noncover-complex terminology (Kim–Kim). It explains why the M-convex-support route fails here. |
-| Horrocks (2002) full text not inspected | Stated explicitly. Xie and Xu, who cite it, still pose the stronger ultra form as open. Search repeated on 4 November 2026. |
+| Horrocks (2002) had been credited from its abstract only (v0.1.0) | Version 0.2.0: read in full and compared theorem by theorem. It proves ordinary log-concavity with a +p_k term, not ULC. Its pair-partition reduction to doubly dependent counts is credited as a precursor (supplement/horrocks_2002_comparison.md). |
 | Proof details: the ground-set size in the marked lemma, the Katona pointer, the union bound in the rank-four case, the Maclaurin step | Each now made explicit. |
 | verify.py used `assert`, so `python -O` passed vacuously | All checks are now explicit conditionals. A mutation test confirms that a wrong value fails under -O. |
 

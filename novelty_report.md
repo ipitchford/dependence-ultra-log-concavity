@@ -205,9 +205,9 @@ David G. C. Horrocks, *Doubly dependent sets in graphs*, Australasian Journal of
 
 David G. C. Horrocks, *The Numbers of Dependent k-Sets in a Graph Are Log Concave*, Journal of Combinatorial Theory, Series B **84**(1) (2002), 180–185. DOI: [10.1006/jctb.2001.2077](https://doi.org/10.1006/jctb.2001.2077). [Publisher abstract](https://www.sciencedirect.com/science/article/pii/S0095895601920775); [institutional metadata](https://islandscholar.ca/index.php/islandora/object/ir%3Air-batch6-1676).
 
-**Inspection limit:** abstract and bibliographic records only. The publisher PDF was blocked by the retrieval service, including a retry using the PDF address returned by OpenAlex. No claim is made to have inspected its proof.
+**Inspection:** complete paper, pages 180-185, read on 4 November 2026 for version 0.2.0. Version 0.1.0 had relied on the abstract and bibliographic records.
 
-**Comparison:** the abstract explicitly claims ordinary logarithmic concavity. [XX] independently credits exactly that result and poses the stronger ULC claim. This is strong evidence that [H02] is not a full-statement collision, but the inaccessible proof limits any claim that the present proof technique is historically new.
+**Comparison:** the abstract explicitly claims ordinary logarithmic concavity. [XX] independently credits exactly that result and poses the stronger ULC claim. Full-text comparison confirms there is no statement collision: Theorem 2.5 is p_k^2 >= p_(k-1)p_(k+1) + p_k, unweighted and unnormalised, and it does not imply ULC. There is a method overlap. Lemma 2.1 sorts pairs by intersection and union, following Hamidoune. It then reduces to middle-rank doubly dependent counts, using [H00], with neighbours of A acting as forced witnesses. That is the same shape as this paper's conditioning plus antipodal-pairs route. The normalised two-colouring inequality, the marked-downset lemma and the critical-element count do not appear. See supplement/horrocks_2002_comparison.md.
 
 ### [KN] Kahn–Neiman, established antipodal machinery
 
@@ -394,7 +394,7 @@ The former returned mostly unrelated uses of “doubly”; the latter returned c
 | Weighted extension | CLEAR TO PROVE, with known machinery acknowledged | State the weighted consequence and explain external-field cancellation and [KN]. Do not inflate this as an unrelated second breakthrough. |
 | CAPU implies ULC; product closure | COLLISION | Cite Kahn–Neiman. |
 | Intersecting-shadow inequality | COLLISION | Cite Katona, using [F16] for the exact accessible formulation. |
-| Particular marked-downset lemma/proof architecture | BOUNDED UNCERTAINTY | Give the proof and its classical input. Do not claim the first use or a fundamentally new shadow theorem. Horrocks 2002's full proof remains to be inspected. |
+| Particular marked-downset lemma/proof architecture | BOUNDED UNCERTAINTY | Give the proof and its classical input. Do not claim the first use or a fundamentally new shadow theorem. Horrocks 2002's pair-partition architecture is a credited precursor (full text compared in v0.2.0). |
 | Noncover/Alexander-dual/2-DNF identifications | Standard exact translations | Use to explain scope, not as claims of newly discovered bridges. |
 | Computational artefacts | Independent verification, not theorem novelty | Describe what was actually checked; do not use graph counts as a substitute for proof. |
 
@@ -402,7 +402,7 @@ The former returned mostly unrelated uses of “doubly”; the latter returned c
 
 ## 7. Missingness audit and permitted language
 
-The key remaining search limitations are the inaccessible [H02] full text, the absence of a systematic MathSciNet/zbMATH search, the lack of a complete citation-forward traversal, predominantly English query vocabulary, and the possibility of very recent unindexed work. No author enquiry was sent. Author contact would be a later scholarly priority check, not a result of this session.
+The key remaining search limitations are the absence of a systematic MathSciNet/zbMATH search, the lack of a complete citation-forward traversal, predominantly English query vocabulary, and the possibility of very recent unindexed work. No author enquiry was sent. Author contact would be a later scholarly priority check, not a result of this session.
 
 Permitted phrasing includes:
 
