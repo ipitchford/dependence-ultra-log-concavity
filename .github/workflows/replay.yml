@@ -1,0 +1,28 @@
+# SPDX-License-Identifier: MIT
+name: Replay
+on:
+  push:
+  pull_request:
+jobs:
+  checks:
+    name: Exact checks (standard library; normal and -O; C++ enumeration)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check MANIFEST.sha256
+        run: sha256sum -c MANIFEST.sha256
+      - name: verify.py (normal and -O) on a scratch copy
+        run: |
+          cp -R . "$RUNNER_TEMP/n"; cp -R . "$RUNNER_TEMP/o"; cd "$RUNNER_TEMP"
+          python -I -B n/verify.py | tee n.log; grep -q '"status": "PASS"' n.log
+          python -O -I -B o/verify.py | tee o.log; grep -q '"status": "PASS"' o.log
+      - name: check_six.cpp
+        run: |
+          c++ -O2 -std=c++17 -Wall -Wextra -pedantic supplement/check_six.cpp -o "$RUNNER_TEMP/check_six"
+          test "$("$RUNNER_TEMP/check_six")" = "checked=2653437 valid=1723681 minmargin=0"
+      - name: Working tree unchanged
+        run: test -z "$(git status --porcelain)"

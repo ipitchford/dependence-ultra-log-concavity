@@ -1,0 +1,211 @@
+\section{Additive 2-matroids of small rank or ground-set size}
+\label{sec:two-matroid}
+
+Following the additive augmentation convention of Xie and Xu \cite{XX}, a
+\emph{2-matroid} is a nonempty downset $\mathcal I\subseteq2^V$ such that
+\begin{equation}\label{eq:two-augmentation}
+S,T\in\mathcal I,\quad |T|\ge |S|+2
+\quad\Longrightarrow\quad
+S\cup\{x\}\in\mathcal I\text{ for some }x\in T\setminus S.
+\end{equation}
+Its rank is $\max\{|S|:S\in\mathcal I\}$. For element weights $w_v\ge0$, write
+\[
+A_j=\sum_{\substack{S\in\mathcal I\\|S|=j}}w(S).
+\]
+
+\begin{theorem}\label{thm:two-matroid-small}
+The weighted rank sequence of a 2-matroid on $n$ ground elements is ultra
+log-concave of ambient order $n$ if its rank is at most four or if $n\le7$.
+Thus, in either case,
+\[
+k(n-k)A_k^2\ge(k+1)(n-k+1)A_{k-1}A_{k+1}
+\qquad(1\le k\le n-1).
+\]
+\end{theorem}
+
+We establish the required antipodal-pairs inequalities analytically. On an
+even ground set of size $2s$, put
+\[
+F_j=\{S\in\mathcal I:|S|=j,\ V\setminus S\in\mathcal I\}.
+\]
+The inequality to prove is $s|F_s|\ge(s+1)|F_{s-1}|$. On two elements this is
+automatic for any downset: if $F_0$ is nonempty, the full two-set is feasible,
+so both singletons are feasible and $|F_1|=2$.
+
+\begin{lemma}[Four elements]\label{lem:two-matroid-four}
+Every 2-matroid on four elements satisfies $2|F_2|\ge3|F_1|$.
+\end{lemma}
+\begin{proof}
+Assume $F_1\ne\varnothing$, as otherwise the assertion is immediate. A
+feasible singleton and its feasible complementary triple show that all four
+singletons are feasible. Thus $|F_1|=t$, the number of feasible triples.
+View the feasible pairs as a graph.
+
+If $t=1$, augment the singleton outside the feasible triple towards that
+triple. This gives a feasible pair joining the outside vertex to a vertex
+of the triple; its complementary pair is feasible by downward closure.
+Hence $|F_2|\ge2$. If $t=2$, the pair shadows of the two triples contain
+all edges of $K_4$ except at most one. At least two perfect matchings remain,
+so $|F_2|\ge4$. If $t\ge3$, all six pairs are feasible, so $|F_2|=6$.
+These three cases give $2|F_2|\ge3t$.
+\end{proof}
+
+\begin{lemma}[Six elements]\label{lem:two-matroid-six}
+Every 2-matroid on six elements satisfies $3|F_3|\ge4|F_2|$.
+\end{lemma}
+\begin{proof}
+Let $R$ be the simple graph with edge set $F_2$, and put $r=|E(R)|=|F_2|$.
+Let $m$ count unordered feasible partitions of $V$ into two triples. Thus
+$|F_3|=2m$, and the target is $3m\ge2r$. The case $r=0$ is immediate.
+
+Let $g$ count unordered balanced partitions with an $R$-edge in each part.
+Every such partition is feasible: if $e\subseteq A$ and $f\subseteq B$ are
+edges, then $A\subseteq V\setminus f$ and $B\subseteq V\setminus e$, and
+the complementary four-set of each $R$-edge is feasible. Hence $m\ge g$.
+
+Suppose first that no edge of $R$ is a vertex cover. Then every edge has an
+edge in its complement. For the doubly dependent counts of the ordinary
+graph $R$, this says $b_2(R)=r$ and $b_3(R)=2g$. Theorem~\ref{thm:apu}
+gives $3b_3(R)\ge4b_2(R)$, so $3m\ge3g\ge2r$.
+
+It remains to consider a vertex-cover edge $ab$. The four-set
+$L=V\setminus\{a,b\}$ is independent in $R$. Put
+\[
+A=N_R(a)\cap L,\quad B=N_R(b)\cap L,\quad p=|A|,\quad q=|B|,
+\]
+and interchange $a,b$ so that $0\le q\le p\le4$. All edges are $ab$ or
+join a centre to a marked leaf, so $r=1+p+q$. Since $ab$ and $L$ are
+feasible, augmentation gives a feasible triple $abx$ for some $x\in L$.
+Its complement is feasible by downward closure. This partition is not
+counted by $g$, because its other part lies in the independent set $L$.
+Therefore
+\begin{equation}\label{eq:two-matroid-extra}
+m\ge g+1.
+\end{equation}
+
+For $q\ge1$, the six balanced partitions separating the centres are
+parametrised by two-sets $X\subseteq L$, giving parts $\{a\}\cup X$ and
+$\{b\}\cup(L\setminus X)$. They contribute to $g$ exactly when $X$ meets
+$A$ and $L\setminus X$ meets $B$. Consequently
+\[
+g\ge6-\bin{4-p}{2}-\bin{4-q}{2}.
+\]
+Here $\bin{4-p}{2}$ counts the two-sets $X$ that miss $A$, and
+$\bin{4-q}{2}$ counts those whose complement $L\setminus X$, itself a
+two-set, misses $B$; the bound is a union bound over these two failure modes.
+If $p=q=1$ and $A\ne B$, direct counting gives $g=2$. The exceptional
+case $p=q=1$, $A=B$ is a triangle with isolated vertices and is treated
+below. All other cases with $q\ge1$ are exhausted by the following table.
+The last column, together with \eqref{eq:two-matroid-extra}, proves the
+desired inequality in each case.
+\begin{center}
+\begin{tabular}{rrrr}
+\toprule
+$p$ & $q$ & Lower bound $g_0$ for $g$ & $3(g_0+1)-2(1+p+q)$\\
+\midrule
+1 & 1 & 2 & 3\\
+2 & 1 & 2 & 1\\
+3 & 1 & 3 & 2\\
+4 & 1 & 3 & 0\\
+2 & 2 & 4 & 5\\
+3 & 2 & 5 & 6\\
+4 & 2 & 5 & 4\\
+3 & 3 & 6 & 7\\
+4 & 3 & 6 & 5\\
+4 & 4 & 6 & 3\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+If $q=0$, the graph $R$ is a star with centre $a$, nonempty leaf set $U$,
+and possible isolated vertices; here $|U|=r$. On $W=V\setminus\{a\}$,
+define a graph $J$ by $ux\in E(J)$ exactly when $\{a,u,x\}$ is feasible.
+Each $u\in U$ has positive degree in $J$, by augmenting $au$ towards its
+feasible complementary four-set. Moreover, a degree-one vertex $u\in U$
+can have its unique neighbour only outside $U$. Indeed, for each $v\in U$,
+augmenting $au$ towards $V\setminus\{a,v\}$ supplies a neighbour of $u$
+other than $v$.
+
+Distribute one unit of charge from each $u\in U$ equally among its incident
+edges in $J$. An edge within $U$ receives at most one, since both endpoints
+have degree at least two; an edge with exactly one endpoint in $U$ also
+receives at most one. Thus at least $|U|$ edges of $J$ meet $U$. Each such
+edge $ux$, with $u\in U$, gives a feasible balanced partition: the triple
+$aux$ is feasible, and its complement lies in the feasible four-set
+$V\setminus\{a,u\}$. Distinct edges give distinct unordered partitions,
+identified by their part containing $a$. Therefore $m\ge|U|=r$.
+
+Finally, suppose $R$ is a triangle on $a,b,c$ with three isolated vertices
+$L$. For each triangle edge, say $ab$, augment $ab$ towards the feasible
+four-set $V\setminus ac=\{b\}\cup L$. This supplies $x\in L$ with $abx$
+feasible. Its complement is a subset of the feasible four-set
+$V\setminus ab$. The three triangle edges yield three distinct unordered
+partitions: the part with two triangle vertices identifies the edge.
+Hence $m\ge3=r$. This completes all cases.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:two-matroid-small}]
+Deletion and contraction by a feasible fixed set preserve
+\eqref{eq:two-augmentation}: for contraction by $P$, apply the original
+axiom to $P\cup S$ and $P\cup T$, whose cardinality difference is unchanged.
+Every positive-probability coordinate restriction therefore remains a
+2-matroid, and its rank cannot increase.
+
+For rank at most four, an even conditional ground set of size $2s\ge8$
+has $F_{s-1}=\varnothing$, because the complementary set would have size
+$s+1\ge5$. Its antipodal-pairs inequality is automatic. The two-point
+observation and Lemmas~\ref{lem:two-matroid-four}--\ref{lem:two-matroid-six}
+cover the remaining even sizes. If the original ground set instead has
+size at most seven, every even conditional ground set already has size at
+most six, and the same lemmas apply regardless of rank.
+
+For positive weights, the law proportional to $w(S)\ind_{\{S\in\mathcal I\}}$
+has antipodal products equal to the common factor $w(V)/Z^2$ on feasible
+complementary pairs. The preceding inequalities therefore give CAPP for
+this law, including after every coordinate restriction. A nonempty
+downset has interval rank support. The Kahn--Neiman criterion \cite{KN}
+gives the asserted weighted ultra log-concavity. Nonnegative weights follow
+by continuity, with the same ambient normalisation $\bin nk$.
+\end{proof}
+
+\begin{corollary}[Initial coefficients in arbitrary rank]
+\label{cor:two-matroid-initial}
+For any 2-matroid on $n$ ground elements and any nonnegative element
+weights, its coefficients satisfy
+\[
+k(n-k)A_k^2\ge(k+1)(n-k+1)A_{k-1}A_{k+1}
+\qquad(1\le k\le\min(3,n-1)).
+\]
+Thus its first $\min(5,n+1)$ binomially normalised coefficients are
+log-concave, using the original ambient order $n$.
+\end{corollary}
+\begin{proof}
+The rank-four truncation $\{S\in\mathcal I:|S|\le4\}$ is a 2-matroid on
+the same ground set. An augmentation between its feasible $S,T$ has size
+$|S|+1\le|T|-1\le3$, so remains in the truncation. Its coefficients through
+rank four agree with the original ones. Apply
+Theorem~\ref{thm:two-matroid-small} to this truncation.
+\end{proof}
+
+The six-element lemma has no rank hypothesis. The rank bound enters only
+in the reduction to even conditional ground sets of size at most six.
+The next unresolved step in this approach is the eight-element
+antipodal-pairs inequality, which compares feasible triples and their
+complementary five-sets with feasible balanced four-set partitions.
+
+An exact obstruction prevents simply replacing the auxiliary graph by an
+arbitrary three-uniform hypergraph. Partition an eight-element set as
+$V=E\mathbin{\dot\cup}\{v\}\mathbin{\dot\cup}A$, with $|E|=3$ and
+$|A|=4$, and take witnesses
+\[
+\mathcal H=\{E\}\cup\{\{v\}\cup P:P\in\binom A2\}.
+\]
+Every witness has a disjoint witness. Nevertheless the doubly dependent
+counts are $b_3=7$ and $b_4=8$: a successful balanced partition consists
+of $E\cup\{a\}$ and $\{v\}\cup(A\setminus\{a\})$ for one of the four
+$a\in A$. Thus $4b_4=32<35=5b_3$. This is an obstruction to that proof
+step, not a counterexample to the $2$-matroid conjecture. Indeed, its
+natural complementary downset has feasible sets $\{v\}$ and $E$, but no
+feasible pair $\{v,e\}$ with $e\in E$, violating
+\eqref{eq:two-augmentation}. Additional augmentation structure would be
+needed at the next stage.
